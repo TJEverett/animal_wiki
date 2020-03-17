@@ -1,4 +1,25 @@
-var last = ".none";
+var lastClass = ".none";
+var lastId = "#none";
+
+var switchShown = function(location){
+  location = "." + location;
+  if(location !== lastClass){
+    jQuery(location).toggleClass("hidden");
+    jQuery(lastClass).toggleClass("hidden");
+    lastClass = location;
+  } else{
+    alert("You're already looking at that one.");
+  };
+};
+
+var switchSelected = function(location){
+  location = "#" + location;
+  if(location !== lastId){
+    jQuery(location).toggleClass("active");
+    jQuery(lastId).toggleClass("active");
+    lastId = location;
+  };
+};
 
 jQuery(document).ready(function(){
   jQuery("a").click(function(event){
@@ -6,26 +27,22 @@ jQuery(document).ready(function(){
   });
 
   jQuery("#none").click(function () {
-    jQuery(".none").toggleClass("hidden");
-    jQuery(last).toggleClass("hidden");
-    last = ".none";
+    switchShown(this.id);
+    switchSelected(this.id);
   });
 
   jQuery("#turtle").click(function () {
-    jQuery(".turtle").toggleClass("hidden");
-    jQuery(last).toggleClass("hidden");
-    last = ".turtle";
+    switchShown(this.id);
+    switchSelected(this.id);
   });
 
   jQuery("#snake").click(function () {
-    jQuery(".snake").toggleClass("hidden");
-    jQuery(last).toggleClass("hidden");
-    last = ".snake";
+    switchShown(this.id);
+    switchSelected(this.id);
   });
 
   jQuery("#frog").click(function () {
-    jQuery(".frog").toggleClass("hidden");
-    jQuery(last).toggleClass("hidden");
-    last = ".frog";
+    switchShown(this.id);
+    switchSelected(this.id);
   });
 });
